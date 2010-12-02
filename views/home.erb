@@ -2,12 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    </head>
+      </head>
     <body>
       <h1>Twitter</h1>
-      <h2>Current Trends</h2>
-      <p><%= @trends['trends']%></p>
-      <h2>Public TimeLine</h2
-      <p> <%= @tweets%></p>
+      
+      <h2>Public TimeLine</h2>
+      <% for tweet in @tweets %>
+      <h3><%= tweet['user']['screen_name']%></h3>
+        <img src="<%=tweet['user']['profile_image_url'] %>" />
+        <p><%= tweet['text'] %></p>
+      <% end %>
     </body>
 <html>

@@ -10,7 +10,7 @@ before do
 end
 
 get '/' do
-  @trends = @client.current_trends
+  
   @tweets = @client.public_timeline
-  erb:home
+  erb :home
 end
