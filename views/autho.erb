@@ -5,12 +5,11 @@
       </head>
     <body>
       <h1>Twitter</h1>
-      <a href="/connect" target = "_self">Conectar<a/>
+      <h2><%= @client %></h2>
       <h2>Public TimeLine</h2>
       <% for tweet in @tweets %>
       <h3><%= tweet['user']['screen_name']%></h3>
         <img src="<%=tweet['user']['profile_image_url'] %>" />
         <p><%= tweet['text'] %></p>
       <% end %>
-    </body>
 <html>
