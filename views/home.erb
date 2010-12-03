@@ -1,8 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+  <title>robetter</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link href="/stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
+  <link rel="icon" type="image/ico" href="/favicon.ico" />
 </head>
 <body>
 	<div id = "wrapper">
@@ -36,7 +38,7 @@
 			<div class ="tweets">
 				<img src="<%=tweet['user']['profile_image_url'] %>" />
 				<p><span class="name"><a href="/<%=tweet['user']['screen_name']%>"><%= tweet['user']['screen_name']%></a></span> 
-					<%= twitter_text(tweet['text']) %></p>
+					<%= tweet['text'] %><p>
 					</div>
 					<% end %>
 
