@@ -22,22 +22,20 @@ get '/' do
 end
 
 post '/update' do
-  p ".--------------------------------update-------------------------------"
   @client.update(params[:tweet])
   redirect "/"
 end
 
-get '/mentions' do
-  p ".--------------------------------mentions-------------------------------"
+get '/mentions' do  
   @tweets = @client.mentions
   erb :home
 end
 
 get '/connect/auth' do  
-
+  
   begin
-  session[:oauth_verifier] = params[:oauth_verifier] if params[:oauth_verifier]
-  @access_token = @client.authorize(session[:request_token], session[:request_token_secret],
+    session[:oauth_verifier] = params[:oauth_verifier] if params[:oauth_verifier]
+    @access_token = @client.authorize(session[:request_token], session[:request_token_secret],
                     :oauth_verifier => session[:oauth_verifier])
   rescue OAuth::Unauthorized ; end
   
@@ -47,10 +45,10 @@ get '/connect/auth' do
     session[:user] = true
   end 
   redirect '/'
+  
 end
 
-get '/connect' do  
-  p "---------------------connect-----------------------------------"
+get '/connect' do    
   request_token = @client.request_token(:oauth_callback => @@config['callback_url'])
   session[:request_token] = request_token.token  
   session[:request_token_secret] = request_token.secret
@@ -58,9 +56,12 @@ get '/connect' do
 end
 
 get '/logout' do
-  session[:access_token]=nil
-  session[:secret_token]=nil
-  session[:user] = false
+  session[:user] = nil
+  session[:request_token] = nil
+  session[:request_token_secret] = nil
+  session[:access_token] = nil
+  session[:secret_token] = nil
   redirect '/'
+  
 end
 
