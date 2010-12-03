@@ -3,6 +3,7 @@ configure do
   @@config = {'consumer_key'=>"AFcCvgpKoilQY506lYPGJQ", 'consumer_secret'=>"tRygHzQOlY9RofsVjEwhoDbTHJdULsx1bhBbbL82Jfs",
               'callback_url' => "http://localhost:8080/connect/auth"}
   set :sessions, true
+  set :views, File.dirname(__FILE__) + '/views'
 end
 
 before do  
