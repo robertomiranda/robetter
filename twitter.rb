@@ -58,13 +58,13 @@ get '/connect' do
 end
 
 get '/logout' do
-  session[:access_token]=nil
-  session[:secret_token]=nil
+  session[:access_token] = nil
+  session[:secret_token] = nil
   session[:user] = false
   redirect '/'
 end
 
 get '/:username' do
-  @tweets = @client.user_timeline(:screen_name => params[:screen_name])
+  @tweets = @client.user_timeline({ :screen_name => params[:username] })
   erb :home
 end
