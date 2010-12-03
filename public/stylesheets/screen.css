@@ -1,0 +1,57 @@
+body{
+    background:  url("../images/background.jpg") #C0DEED repeat-x;
+
+    margin: 0;
+    padding: 0;
+    
+}
+
+a{
+    text-decoration: none;
+   
+}
+
+#wrapper{
+    
+  
+     margin: 0;
+    padding: 0;
+    
+}
+
+#header{
+    
+}
+
+#content{
+    background: #ffffff;
+    margin: 0 auto;
+    border: 2px solid dotted;
+    -moz-border-radius: 15px;
+   -webkit-border-radius: 15px;
+   padding: 0 100px;
+    width: 980px;
+}
+#content textarea{
+    
+}
+
+.tweets{
+    border-bottom: #cfcfcf thin solid ;
+    padding: 15px 0;
+    
+    clear: both;
+}
+
+.tweets img{
+    float: left;
+    
+    padding-right: 10px;
+}
+.tweets p{
+    margin-top: 0;
+}
+
+.name{
+    font-weight: bold;
+}

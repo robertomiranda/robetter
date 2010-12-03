@@ -3,7 +3,7 @@ require "sinatra"
 require 'twitter_oauth'
 
 configure do
-  @@config = {'consumer_key'=>"AFcCvgpKoilQY506lYPGJQ", 'consumer_secret'=>"tRygHzQOlY9RofsVjEwhoDbTHJdULsx1bhBbbL82Jfs"
+  @@config = {'consumer_key'=>"AFcCvgpKoilQY506lYPGJQ", 'consumer_secret'=>"tRygHzQOlY9RofsVjEwhoDbTHJdULsx1bhBbbL82Jfs",
               'callback_url' => "http://localhost:4567/connect/auth"}
   set :sessions, true
 end

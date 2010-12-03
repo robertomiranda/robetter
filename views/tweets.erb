@@ -2,20 +2,34 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-      </head>
+        <link href="/stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
+    </head>
     <body>
-      <h1><a href="/connect" target="_self" >Twitter</a></h1>
-      <h2><a href="/mentions" target="_self" >mentions</a></h2>
-      <h2><%= @client %></h2>
-      <p>¿Que Pasa?</p>
-      <form action="/update" method="post">
-      <textarea name="tweet"></textarea>
-      <input type="submit" value="tweet"/>
-      </form>
-      <h2>Public TimeLine</h2>
-      <% for tweet in @tweets %>
-      <h3><%= tweet['user']['screen_name']%></h3>
+    <div id = "wrapper">
+      
+      <div id = "header">
+      <h1><a href="/timeline" target="_self" >Twitter</a></h1>
+      </div>
+      
+      <div id = "content">    
+        
+        <h2><a href="/mentions" target="_self" >mentions</a></h2>
+        <p>¿Que Pasa?</p>
+        <form action="/update" method="post">
+        <textarea name="tweet" cols=120 row=3></textarea>
+        <input type="submit" value="tweet"/>
+        </form>
+        <h2>Public TimeLine</h2>
+        
+        <% for tweet in @tweets %>
+        <div class ="tweets">
         <img src="<%=tweet['user']['profile_image_url'] %>" />
-        <p><%= tweet['text'] %></p>
-      <% end %>
+        <p><span class="name"><%= tweet['user']['screen_name']%></span> <%= tweet['text'] %><p>
+          
+          </div>
+          <% end %>
+          
+        </div>
+    </div>
+    </body>
 <html>
