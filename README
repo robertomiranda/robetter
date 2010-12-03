@@ -1,8 +1,8 @@
 Features:
 
 Public Timeline /
-Authentication  /auth
-Callback /auth/callback ---> redirect to /timeline
+Authentication  /connect
+Callback /connect/callback ---> redirect to /timeline
 Timeline /timeline
 Mentions /mentions
 Update /update ---> redirect to /timeline
