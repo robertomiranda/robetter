@@ -21,7 +21,7 @@
 				<li><a href="/mentions" target="_self" >mentions</a></li>
 				<li><a href="/logout" target="_self" >logout</a></li>
 			</ul>
-			<p>¿Que Pasa?</p>
+			<p>What happen?</p>
 			<form action="/update" method="post">
 				<textarea name="tweet" cols=120 row=3></textarea>
 				<input type="submit" value="tweet"/>
@@ -29,10 +29,9 @@
 
 			<% else %>
 
-			<h2><a href="/connect" target="_self" >conectar</a></h2>
+			<h2><a href="/connect" target="_self" >connect</a></h2>
 			<%end %>
 
-			<h2>Public TimeLine</h2>
 
 			<% for tweet in @tweets %>
 			<div class ="tweets">
