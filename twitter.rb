@@ -64,3 +64,7 @@ get '/logout' do
   redirect '/'
 end
 
+get '/:username' do
+  @tweets = @client.user_timeline(:screen_name => params[:screen_name])
+  erb :home
+end
