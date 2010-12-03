@@ -1,4 +1,9 @@
-autenticacion
-add twitts
-read twitts
-view mentions
+Features:
+
+Public Timeline /
+Authentication  /auth
+Callback /auth/callback ---> redirect to /timeline
+Timeline /timeline
+Mentions /mentions
+Update /update ---> redirect to /timeline
+
