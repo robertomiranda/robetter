@@ -2,7 +2,7 @@
 configure do
   
   if ENV['RACK_ENV'] == "production"
-    callback = "http://robertter.heroku.com/connect/auth"   
+    callback = "http://robetter.heroku.com/connect/auth"   
   else
     callback = "http://localhost:8080/connect/auth"
   end
