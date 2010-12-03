@@ -12,6 +12,14 @@ before do
                                      :token => session[:access_token], :secret => session[:secret_token])
 end
 
+helpers do
+  def twitter_text(text)
+   text.gsub!(/@(\w+)/) {|m| "<a href=\"/#{m.gsub('@','')}\">#{m}</a>"}  
+   text.gsub!(/http:\/\/.+(\/.)*/) {|m| "<a href=\"#{m}\">#{m}</a>"}
+   text  
+  end
+end
+
 get '/' do
   if session[:user]
     @tweets = @client.friends_timeline
