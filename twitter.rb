@@ -39,11 +39,8 @@ get '/connect/auth' do
 
   begin
   session[:oauth_verifier] = params[:oauth_verifier] if params[:oauth_verifier]
-  @access_token = @client.authorize(
-     session[:request_token],
-      session[:request_token_secret],
-      :oauth_verifier => session[:oauth_verifier]
-    )
+  @access_token = @client.authorize(session[:request_token], session[:request_token_secret],
+                    :oauth_verifier => session[:oauth_verifier])
   rescue OAuth::Unauthorized ; end
   
   if @client.authorized?    
