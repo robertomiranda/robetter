@@ -2,5 +2,5 @@ require "rubygems"
 require "bundler"
 Bundler.require(:default)
 
-require "twitter"
+require "twitter.rb"
 run Sinatra::Application
