@@ -1,7 +1,14 @@
 
 configure do
+  
+  if ENV['RACK_ENV'] == "production"
+    callback = "http://robertter.heroku.com/connect/auth"   
+  else
+    callback = "http://localhost:8080/connect/auth"
+  end
+  
   @@config = {'consumer_key'=>"AFcCvgpKoilQY506lYPGJQ", 'consumer_secret'=>"tRygHzQOlY9RofsVjEwhoDbTHJdULsx1bhBbbL82Jfs",
-              'callback_url' => "http://localhost:8080/connect/auth"}
+              'callback_url' => callback}
   set :sessions, true
   set :views, File.dirname(__FILE__) + '/views'
   set :public, File.dirname(__FILE__) + '/public'
