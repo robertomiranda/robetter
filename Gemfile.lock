@@ -2,6 +2,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     json (1.4.6)
+    kgio (2.0.0)
     mime-types (1.16)
     oauth (0.4.4)
     rack (1.2.1)
@@ -13,6 +14,9 @@ GEM
       json (>= 1.1.9)
       mime-types (>= 1.16)
       oauth (>= 0.4.1)
+    unicorn (3.0.1)
+      kgio (~> 2.0.0)
+      rack
 
 PLATFORMS
   ruby
@@ -20,3 +24,4 @@ PLATFORMS
 DEPENDENCIES
   sinatra
   twitter_oauth
+  unicorn
