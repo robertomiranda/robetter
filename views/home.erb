@@ -38,7 +38,7 @@
 			<div class ="tweets">
 				<img src="<%=tweet['user']['profile_image_url'] %>" />
 				<p><span class="name"><a href="/<%=tweet['user']['screen_name']%>"><%= tweet['user']['screen_name']%></a></span> 
-					<%= tweet['text'] %><p>
+					<%= twitter_text(tweet['text']) %><p>
 					</div>
 					<% end %>
 
