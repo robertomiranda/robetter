@@ -55,8 +55,8 @@ a{
 }
 
 .tweets img{
-    float: left;
-    
+    width: 48px;
+    float: left;    
     padding-right: 10px;
 }
 .tweets p{
