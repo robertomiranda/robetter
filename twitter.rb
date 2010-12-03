@@ -4,6 +4,7 @@ configure do
               'callback_url' => "http://localhost:8080/connect/auth"}
   set :sessions, true
   set :views, File.dirname(__FILE__) + '/views'
+  set :public, File.dirname(__FILE__) + '/public'
 end
 
 before do  
@@ -11,26 +12,25 @@ before do
                                      :token => session[:access_token], :secret => session[:secret_token])
 end
 
-get '/' do  
-  @tweets = @client.public_timeline  
+get '/' do
+  if session[:user]
+    @tweets = @client.friends_timeline
+  else
+    @tweets = @client.public_timeline  
+  end
   erb :home
-end
-
-get '/timeline'do
-  @tweets = @client.friends_timeline
-  erb :tweets
 end
 
 post '/update' do
   p ".--------------------------------update-------------------------------"
   @client.update(params[:tweet])
-  redirect "/timeline"
+  redirect "/"
 end
 
 get '/mentions' do
   p ".--------------------------------mentions-------------------------------"
   @tweets = @client.mentions
-  erb :tweets
+  erb :home
 end
 
 get '/connect/auth' do  
@@ -42,13 +42,11 @@ get '/connect/auth' do
   rescue OAuth::Unauthorized ; end
   
   if @client.authorized?    
-      session[:access_token] = @access_token.token
-      session[:secret_token] = @access_token.secret
-      redirect '/timeline'
-    else
-      redirect '/'
-  end    
-  
+    session[:access_token] = @access_token.token
+    session[:secret_token] = @access_token.secret
+    session[:user] = true
+  end 
+  redirect '/'
 end
 
 get '/connect' do  
@@ -58,3 +56,11 @@ get '/connect' do
   session[:request_token_secret] = request_token.secret
   redirect request_token.authorize_url.gsub('authorize', 'authenticate') 
 end
+
+get '/logout' do
+  session[:access_token]=nil
+  session[:secret_token]=nil
+  session[:user] = false
+  redirect '/'
+end
+

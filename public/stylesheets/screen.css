@@ -18,10 +18,17 @@ a{
     padding: 0;
     
 }
-
-#header{
-    
+#header h1{
+    margin-left: 15%;
 }
+#header h1 a{
+    background: url("../images/twitter-logo.png") no-repeat;
+    display: block;
+     height: 128px;
+     text-indent: -9999px;
+    width: 128px;
+}
+
 
 #content{
     background: #ffffff;
@@ -32,8 +39,10 @@ a{
    padding: 0 100px;
     width: 980px;
 }
-#content textarea{
-    
+
+ #content ul  li{
+    display: inline;
+    list-style: none;
 }
 
 .tweets{
