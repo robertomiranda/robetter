@@ -3,4 +3,4 @@ require "bundler"
 Bundler.require(:default)
 
 require "twitter.rb"
-run Sinatra::Application
+run Robetter.new

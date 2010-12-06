@@ -1,4 +1,5 @@
-
+class Robetter < Sinatra::Application
+  
 configure do
   
   if ENV['RACK_ENV'] == "production"
@@ -79,11 +80,10 @@ get '/logout' do
   
 end
 
-#get '/favicon.ico' do
-#  File.open(File.expand_path(File.join(File.dirname(__FILE__),'public','favicon.ico'))).read
-#end
 
 get '/:username' do
   @tweets = @client.user_timeline({ :screen_name => params[:username] })
   erb :home
+end
+
 end
