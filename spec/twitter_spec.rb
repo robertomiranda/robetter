@@ -43,8 +43,9 @@ describe Robetter do
  end
 
  it "should get user timeline when user is logged" do
+  session[:user] = true
   TwitterOAuth::Client.stub!(:new).and_return(@authenticated_client)
-  get '/', {}, { "rack.session" =>  { :user => true}}
+  get '/', {}, {}
   last_response.body.include?("friend1").should be_true
  end
 
