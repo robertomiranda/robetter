@@ -69,7 +69,6 @@ get '/connect' do
   request_token = @client.request_token(:oauth_callback => @@config['callback_url'])
   session[:request_token] = request_token.token  
   session[:request_token_secret] = request_token.secret
-  puts request_token.authorize_url
   redirect request_token.authorize_url.gsub('authorize', 'authenticate') 
 end
 

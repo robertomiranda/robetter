@@ -72,15 +72,13 @@ describe Robetter do
   session[:user] = true
   TwitterOAuth::Client.stub!(:new).and_return(@authenticated_client)
   get '/friend1', {}, {}
-    puts last_response.inspect
   last_response.body.include?("holamundo1").should be_true
  end
 
  it "should redirect to twitter and connect" do
-  #TwitterOAuth::Client.stub!(:new).and_return(@authenticated_client)
   get '/connect', {}, {}
-  puts last_response.inspect
-
+  follow_redirect!
+  last_response.ok?
  end
 
  it "should authorize the client after connect" do
