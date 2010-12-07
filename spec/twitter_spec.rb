@@ -78,7 +78,7 @@ describe Robetter do
  it "should redirect to twitter and connect" do
   get '/connect', {}, {}
   follow_redirect!
-  last_response.ok?
+  pending
  end
 
  it "should authorize the client after connect" do
