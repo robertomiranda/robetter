@@ -34,7 +34,7 @@ get '/' do
   else
     @tweets = @client.public_timeline  
   end
-  erb :home
+  erb :home.reques
 end
 
 post '/update' do
@@ -48,12 +48,14 @@ get '/mentions' do
 end
 
 get '/connect/auth' do  
-  
+  puts "/connect/auth"
   begin
     session[:oauth_verifier] = params[:oauth_verifier] if params[:oauth_verifier]
     @access_token = @client.authorize(session[:request_token], session[:request_token_secret],
                     :oauth_verifier => session[:oauth_verifier])
-  rescue OAuth::Unauthorized ; end
+  rescue OAuth::Unauthorized
+                  
+  end
   
   if @client.authorized?    
     session[:access_token] = @access_token.token
@@ -67,6 +69,7 @@ get '/connect' do
   request_token = @client.request_token(:oauth_callback => @@config['callback_url'])
   session[:request_token] = request_token.token  
   session[:request_token_secret] = request_token.secret
+  puts request_token.authorize_url
   redirect request_token.authorize_url.gsub('authorize', 'authenticate') 
 end
 
@@ -77,7 +80,6 @@ get '/logout' do
   session[:access_token] = nil
   session[:secret_token] = nil
   redirect '/'
-  
 end
 
 

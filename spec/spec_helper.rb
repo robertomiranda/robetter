@@ -11,6 +11,14 @@ require 'spec/interop/test'
 set :enviorement, :test
 set :session, true
 
+FakeWeb.allow_net_connect = false
+
+FakeWeb.register_uri(:post, 'http://api.twitter.com/oauth/request_token', :body => 'oauth_token=fake&oauth_token_secret=fake')
+FakeWeb.register_uri(:post, 'http://api.twitter.com/oauth/access_token', :body => 'oauth_token=fake&oauth_token_secret=fake')
+FakeWeb.register_uri(:get, 'http://twitter.com/account/verify_credentials.json', :response => File.join(File.dirname(__FILE__), 'verify_credentials.json'))
+FakeWeb.register_uri(:get, "http://api.twitter.com/oauth/authenticate?oauth_token=fake", 
+                     :status => ["301", "Moved Permanently"],  
+                     :location => "localhost")
 
 class SessionData
   def initialize(cookies)
