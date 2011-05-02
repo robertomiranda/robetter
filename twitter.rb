@@ -34,7 +34,7 @@ get '/' do
   else
     @tweets = @client.public_timeline  
   end
-  erb :home.reques
+  erb :home
 end
 
 post '/update' do
